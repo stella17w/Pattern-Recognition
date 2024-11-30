@@ -46,7 +46,7 @@ for window_size in windows:
     curr_accuracy=[0,0,0,0]
 
     #support vector machine
-    alg_svm=svm.LinearSVC()
+    alg_svm=svm.SVC()
     alg_svm.fit(train_set,train_labels)
     test_predictions[0]=alg_svm.predict(test_set)
 
