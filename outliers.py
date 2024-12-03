@@ -12,12 +12,7 @@ file_names=["art_daily_no_noise.csv", "art_daily_perfect_square_wave.csv", "art_
             'art_flatline.csv', "art_increase_spike_density.csv", "art_load_balancer_spikes.csv","art_noisy.csv"]
 file_labels=[0,0,0,0,1,1,0]
 
-pattern_changes_train=["art_daily_flatmiddle.csv","art_daily_jumpsdown.csv"]
-pattern_changes_test=["art_daily_jumpsup.csv","art_daily_nojump.csv"]
-anomaly_start=2850
-anomaly_end=3200
-
-windows=[96,168,672]
+windows=[6,7,8,9,12,14,16,18,21,24,28,32,36,42,48,56,63,64,72,84,96,112,126,144,168,192,224,252,288,336,448,504,576,672]
 best_metrics=[[],[],[],[]]
 all_accuracy=[[],[],[],[]]
 
@@ -39,25 +34,6 @@ for window_size in windows:
             else:
                 test_set.append(df.to_numpy()[i:i+window_size:,1])
                 test_labels.append(file_labels[f])
-
-    #split waveforms with one different into training and testing
-    for p in pattern_changes_train:
-        df = pd.read_csv(p)
-        for i in range(0,4032,window_size):
-            train_set.append(df.to_numpy()[i:i+window_size,1])
-            if i >=2850 and i<3200:
-                train_labels.append(1)
-            else:
-                train_labels.append(0)
-
-    for p in pattern_changes_test:
-        df = pd.read_csv(p)
-        for i in range(0,4032,window_size):
-            test_set.append(df.to_numpy()[i:i+window_size,1])
-            if i >=2850 and i<3200:
-                test_labels.append(1)
-            else:
-                test_labels.append(0)
 
     #normalize the data
     train_set=normalize(train_set)
@@ -135,6 +111,6 @@ for p in range(0,len(best_metrics)):
         y=1
 
 #graph
-fig.suptitle("Accuracy versus Window Size for Outliers and Changes in Data Patterns", fontsize=12)
+fig.suptitle("Accuracy versus Window Size for Detecting Outliers", fontsize=12)
 fig.tight_layout()
 plt.show()
