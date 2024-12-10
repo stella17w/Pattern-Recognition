@@ -1,6 +1,9 @@
 Purpose: Compare Support Vector Machine (SVM), Random Forest, K-nearest neighbor, and K-Means Clustering on their accuracy in detecting data anomalies in the Numenta Anomaly Benchmark artificial dataset.
 
 Description: I compared different data window sizes and tested these algorithms on their accuracy, precision, recall, AUC-ROC, AUC-PR, false positives, and false negatives on detecting outliers and tested on detecting differences in waveform patterns. Here are the results from this code:
+![Window_size](https://github.com/user-attachments/assets/0bde2fc7-80a6-46e5-9245-ca8bf57bd0bb)
+
+![All_window_size](https://github.com/user-attachments/assets/dfd8280d-96bf-4aee-b962-69be2e7b8253)
 
 
 Instructions on how to replicate my result:
